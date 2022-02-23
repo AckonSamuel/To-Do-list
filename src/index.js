@@ -1,5 +1,6 @@
 /* eslint-disable linebreak-style */
 import './style.css';
+import './src/assets/fontawesome-free-6.0.0-web/css/all.css';
 
 const task = [
     {
