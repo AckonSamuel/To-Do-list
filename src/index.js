@@ -5,7 +5,7 @@ import '@fortawesome/fontawesome-free/js/all.js';
 
 const task = [
   {
-    description: 'eat',
+    description: 'walk',
     completed: false,
     index: 0,
   },
