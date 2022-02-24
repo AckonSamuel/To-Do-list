@@ -1,7 +1,7 @@
 /* eslint-disable linebreak-style */
 import './style.css';
 
-import './style.css';
+import '@fortawesome/fontawesome-free/js/all.js';
 
 const task = [
     {
