@@ -1,9 +1,8 @@
 ![](https://img.shields.io/badge/Microverse-blueviolet)
 
-> This is a solo project being built in our second module of our curriculum at microverse. its a to-do list application were you are able to add and remove and mark completed tasks
-![screenshot](assets/demo.png)
+> This is a solo project being built in our second module of our curriculum at microverse. It is a to-do list application where you are able to add, remove and mark completed tasks
 
-Our goal here is to Build a To-do list application with add, remove and checked feature from scratch using JavaScripts. click [here](https://harlexkhal.github.io/To-do-list-app/) to see deployed live version
+Our goal here is to Build a To-do list application with add, remove and checked feature from scratch using JavaScripts.
 
 ### Features implemented so far are:
 
