@@ -1,70 +1,74 @@
 * {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
 }
 
 .job {
-    display: flex;
-    flex-direction: row;
-    padding: 1em 1em;
-    align-items: center;
-    width: 100%;
-    gap: 1em;
+  display: flex;
+  flex-direction: row;
+  padding: 1em 1em;
+  align-items: center;
+  width: 100%;
+  gap: 1em;
 }
 
 .container {
-    display: flex;
-    width: 50%;
-    margin: auto;
-    flex-direction: column;
-    box-shadow: 2px 2px 50px #aaa;
+  display: flex;
+  width: 50%;
+  margin: auto;
+  flex-direction: column;
+  box-shadow: 2px 2px 50px #aaa;
+  margin-top: 5em;
 }
 
 .today {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    padding: 1em 1em;
-    width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 1em 1em;
+  width: 100%;
 }
 
 #list-add {
-    border: none;
-    padding: 1em 1em;
-    width: 100%;
+  border: none;
+  padding: 1em 1em;
+  width: 100%;
 }
 
 .today,
 #list-add,
 li {
-    border-bottom: 1px solid #aaa;
+  border-bottom: 1px solid #aaa;
 }
 
 button {
-    width: 100%;
-    height: 60px;
-    border: none;
+  width: 100%;
+  height: 60px;
+  border: none;
 }
 
 .fa-ellipsis-vertical {
-    margin-left: auto;
-    color: #aaa;
+  margin-left: auto;
+  color: #aaa;
 }
 
 .fa-arrows-rotate {
-    color: #aaa;
+  color: #aaa;
 }
 
 ::-webkit-input-placeholder {
-    font-style: italic;
- }
- :-moz-placeholder {
-    font-style: italic;  
- }
- ::-moz-placeholder {
-    font-style: italic;  
- }
- :-ms-input-placeholder {  
-    font-style: italic; 
- }
+  font-style: italic;
+}
+
+::-moz-placeholder {
+  font-style: italic;
+}
+
+:-moz-placeholder {
+  font-style: italic;
+}
+
+:-ms-input-placeholder {
+  font-style: italic;
+}
