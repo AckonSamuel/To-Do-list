@@ -2,22 +2,21 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>to do list</title>
 <script defer src="main.js"></script></head>
 <body>
-    <div class="container">
-        <div class="today">
-            <p>Today's To Do</p>
+    <div id="container">
+        <div id="list-container">
+            <p id="title">today's To Do</p>
             <i class="fa-solid fa-arrows-rotate"></i>
-        </div>
-        <form>
-            <input type="text" placeholder="Add to your list..." class="list-input" id="list-add">
-          <ul class="to-do-list"></ul>
-          <button type="button">Clear all completed</button>
-        </form>
+            <input required id="task"  type="text" placeholder="Add to your list..." />
+            <img id="enter" src="#" alt="enter image">
+
+             <ul class="list"></ul>
+            <button id="clear" type="button">Clear all completed</button>
+        </div>      
     </div>
- 
+
 </body>
 </html>
