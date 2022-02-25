@@ -1,7 +1,7 @@
 /* eslint-disable linebreak-style */
-import { taskCompleted } from './events.js';
+import { taskCompleted, taskEdit, updateValue } from './events.js';
 
-class toDoList {
+class ToDoList {
   constructor() {
     this.taskList = [];
   }
@@ -14,20 +14,22 @@ class toDoList {
     const checkBox = document.createElement('input');
     checkBox.type = 'checkbox';
     checkBox.className = 'status';
-    checkBox.addEventListener('click', taskDone);
+    checkBox.addEventListener('click', taskCompleted);
     const taskDescription = document.createElement('input');
     taskDescription.className = 'description';
     taskDescription.value = description;
     taskDescription.disabled = true;
     taskDescription.required = true;
     taskDescription.addEventListener('keydown', (event) => updateValue(event, this));
-    const ellipsis = document.createElement('i');
-    ellipsis.classList.add('fa-solid', 'fa-ellipsis', 'fa-ellipsis-vertical');
-    checkBox.addEventListener('submit', taskCompleted);
-    ellipsis.addEventListener('click', (event) => taskEdit(event, this));
+    const dotsContainer = document.createElement('span');
+    dotsContainer.className = 'dots-container';
+    const dots = document.createElement('i');
+    dots.className = 'fa-solid fa-ellipsis-vertical';
+    dotsContainer.appendChild(dots);
+    dotsContainer.addEventListener('click', (event) => taskEdit(event, this));
     li.appendChild(checkBox);
     li.appendChild(taskDescription);
-    li.appendChild(ellipsis);
+    li.appendChild(dots);
     taskContainer.appendChild(li);
     this.taskList.push({ id, description, completed: false });
     window.localStorage.setItem('tasks', JSON.stringify(this.taskList));
@@ -36,5 +38,20 @@ class toDoList {
   completeTask(index) {
     this.taskList[index].completed = true;
   }
+
+  removeTask(index) {
+    this.taskList.splice(index, 1);
+    this.taskList = this.taskList.map((task, i) => (
+      { index: i + 1, description: task.description, completed: task.completed }
+    ));
+
+    window.localStorage.setItem('tasks', JSON.stringify(this.taskList));
+  }
+
+  updateTaskDeskcription(index, value) {
+    this.taskList[index].description = value;
+    window.localStorage.setItem('tasks', JSON.stringify(this.taskList));
+  }
 }
-export default toDoList;
+const taskList = new ToDoList();
+export default taskList;
