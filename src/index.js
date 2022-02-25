@@ -2,7 +2,7 @@
 import './style.css';
 import '@fortawesome/fontawesome-free/js/all.js';
 import { showToDoList } from './modules/functions.js';
-import taskList from './modules/todoList.js';
+import taskList from './modules/taskList.js';
 import { taskAdd, removeCompleted } from './modules/events.js';
 import enter from './images/enter.svg';
 
