@@ -1,14 +1,10 @@
-import jobList from "./jobList";
-
 /* eslint-disable linebreak-style */
-export const getJobs = () => {
-    return JSON.parse(localStorage.task);
-}
+export const getTasks = () => JSON.parse(localStorage.tasks);
 
-export const displayJobs = (lis) => {
-    if(!window.localStorage.task) return;
-    const lis = JSON.parse(localStorage.task);
-    lis.forEach((task) => {
-        jobList.addJob(task.description);
-    }
-)};
+export const showToDoList = (taskList) => {
+  if (!window.localStorage.tasks) return;
+  const list = JSON.parse(localStorage.tasks);
+  list.forEach((task) => {
+    taskList.addTask(task.description);
+  });
+};

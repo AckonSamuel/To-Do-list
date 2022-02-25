@@ -1,35 +1,40 @@
 /* eslint-disable linebreak-style */
+import { taskCompleted } from './events.js';
 
-class jobList {
+class toDoList {
   constructor() {
-    this.task = [];
+    this.taskList = [];
   }
 
-  addJob(description) {
-    const list = document.querySelector('ul');
-    const id = list.children.length + 1;
+  addTask(description) {
+    const taskContainer = document.querySelector('ul');
+    const id = taskContainer.children.length + 1;
     const li = document.createElement('li');
     li.className = 'job';
     const checkBox = document.createElement('input');
     checkBox.type = 'checkbox';
     checkBox.className = 'status';
+    checkBox.addEventListener('click', taskDone);
     const taskDescription = document.createElement('input');
     taskDescription.className = 'description';
     taskDescription.value = description;
     taskDescription.disabled = true;
     taskDescription.required = true;
+    taskDescription.addEventListener('keydown', (event) => updateValue(event, this));
     const ellipsis = document.createElement('i');
     ellipsis.classList.add('fa-solid', 'fa-ellipsis', 'fa-ellipsis-vertical');
+    checkBox.addEventListener('submit', taskCompleted);
+    ellipsis.addEventListener('click', (event) => taskEdit(event, this));
     li.appendChild(checkBox);
     li.appendChild(taskDescription);
     li.appendChild(ellipsis);
-    list.appendChild(li);
+    taskContainer.appendChild(li);
     this.taskList.push({ id, description, completed: false });
-    window.localStorage.setItem('list', JSON.stringify(this.taskList));
+    window.localStorage.setItem('tasks', JSON.stringify(this.taskList));
   }
 
   completeTask(index) {
     this.taskList[index].completed = true;
   }
 }
-export default jobList;
+export default toDoList;
