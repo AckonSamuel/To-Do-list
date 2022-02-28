@@ -33,6 +33,9 @@ The basic requirements for building the executable are:
 - VSCode or any other equivalent code editor
 - Node Package Manager (For installing packages like Lighthous, webhint & stylelint used for checking for debugging bad codes before deployment)
 
+### LIVE LINK
+Here's a [live link](https://ackonsamuel.github.io/To-Do-list/) to the To-do list app.
+
 # Getting Started
 
 #### Cloning the project
