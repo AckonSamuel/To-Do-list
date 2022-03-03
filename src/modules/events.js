@@ -1,17 +1,20 @@
 /* eslint-disable linebreak-style */
 import { getTasks, checkTaskStyle } from './functions.js';
+import deleteTask from './deleteTask.js';
 
 export const taskAdd = (event, list) => {
   const input = document.querySelector('#task');
-  const ul = input.parentNode.children[4];
+  const ul = document.querySelector('.list');
   if (!input.value) {
-    return;
+    return 'empty';
   }
   if (event.keyCode === 13 || event.type === 'click') {
     list.addTask(input.value);
     ul.classList.remove('dn');
     input.value = null;
+    return 'done';
   }
+  return 'working!';
 };
 
 export const taskCompleted = (event, list) => {
@@ -35,16 +38,22 @@ export const taskEdit = (event, list) => {
     task.classList.add('bg-yellow');
     task.children[1].disabled = false;
   } else {
+    // const icons = document.querySelectorAll('.svg-inline--fa');
+    // const [, ...iconsArr] = icons;
+    // const index = iconsArr.indexOf(event.target);
+    // task.classList.remove('bg-yellow');
+    // task.children[1].disabled = true;
+    // list.removeTask(index);
+    // if (!list.taskList.length) {
+    //   task.parentNode.classList.add('dn');
+    // }
+    // task.remove();
     const icons = document.querySelectorAll('.svg-inline--fa');
     const [, ...iconsArr] = icons;
-    const index = iconsArr.indexOf(event.target);
     task.classList.remove('bg-yellow');
     task.children[1].disabled = true;
-    list.removeTask(index);
-    if (!list.taskList.length) {
-      task.parentNode.classList.add('dn');
-    }
-    task.remove();
+    const index = iconsArr.indexOf(event.target);
+    deleteTask(index, list, task);
   }
 };
 
