@@ -38,16 +38,6 @@ export const taskEdit = (event, list) => {
     task.classList.add('bg-yellow');
     task.children[1].disabled = false;
   } else {
-    // const icons = document.querySelectorAll('.svg-inline--fa');
-    // const [, ...iconsArr] = icons;
-    // const index = iconsArr.indexOf(event.target);
-    // task.classList.remove('bg-yellow');
-    // task.children[1].disabled = true;
-    // list.removeTask(index);
-    // if (!list.taskList.length) {
-    //   task.parentNode.classList.add('dn');
-    // }
-    // task.remove();
     const icons = document.querySelectorAll('.svg-inline--fa');
     const [, ...iconsArr] = icons;
     task.classList.remove('bg-yellow');
