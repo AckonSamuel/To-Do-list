@@ -74,3 +74,6 @@ export const removeCompleted = (event, list) => {
     ul.classList.add('dn');
   }
 };
+
+module.exports = { taskAdd, taskEdit };
+

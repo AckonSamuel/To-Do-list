@@ -78,3 +78,5 @@ class ToDoList {
 }
 const taskList = new ToDoList();
 export default taskList;
+
+module.exports = taskList;

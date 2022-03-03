@@ -21,3 +21,5 @@ export const showToDoList = (taskList) => {
     taskList.loadTask(task);
   });
 };
+
+module.exports = { getTasks, checkTaskStyle };
