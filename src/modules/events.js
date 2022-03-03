@@ -76,4 +76,3 @@ export const removeCompleted = (event, list) => {
 };
 
 module.exports = { taskAdd, taskEdit };
-

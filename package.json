@@ -9,10 +9,6 @@
     "start": "webpack serve --open",
     "build": "webpack"
   },
-  "jest": {
-    "transform": {
-      "^.+\\.[t|j]sx?$": "babel-jest"
-    },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/AckonSamuel/To-Do-list.git"
