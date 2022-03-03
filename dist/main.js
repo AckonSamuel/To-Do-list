@@ -151,6 +151,17 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _sty
 
 /***/ }),
 
+/***/ "./src/modules/deleteTask.js":
+/*!***********************************!*\
+  !*** ./src/modules/deleteTask.js ***!
+  \***********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\nconst deleteTask = (index, list, task) => {\n  list.removeTask(index);\n  if (!list.taskList.length) {\n    task.parentNode.classList.add('dn');\n  }\n  task.remove();\n};\n\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (deleteTask);\n\n//# sourceURL=webpack://to-do-list/./src/modules/deleteTask.js?");
+
+/***/ }),
+
 /***/ "./src/modules/events.js":
 /*!*******************************!*\
   !*** ./src/modules/events.js ***!
@@ -158,7 +169,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _sty
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"taskAdd\": () => (/* binding */ taskAdd),\n/* harmony export */   \"taskCompleted\": () => (/* binding */ taskCompleted),\n/* harmony export */   \"taskEdit\": () => (/* binding */ taskEdit),\n/* harmony export */   \"updateValue\": () => (/* binding */ updateValue),\n/* harmony export */   \"removeCompleted\": () => (/* binding */ removeCompleted)\n/* harmony export */ });\n/* harmony import */ var _functions_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./functions.js */ \"./src/modules/functions.js\");\n/* eslint-disable linebreak-style */\r\n\r\n\r\nconst taskAdd = (event, list) => {\r\n  const input = document.querySelector('#task');\r\n  const ul = input.parentNode.children[4];\r\n  if (!input.value) {\r\n    return;\r\n  }\r\n  if (event.keyCode === 13 || event.type === 'click') {\r\n    list.addTask(input.value);\r\n    ul.classList.remove('dn');\r\n    input.value = null;\r\n  }\r\n};\r\n\r\nconst taskCompleted = (event, list) => {\r\n  const checked = !event.target.parentNode.children[1].classList.contains('completed');\r\n  const listOfTasks = document.querySelectorAll('.checkbox');\r\n  const index = Array.from(listOfTasks).indexOf(event.target);\r\n  event.target.parentNode.classList.toggle('disabled');\r\n  event.target.parentNode.children[1].classList.toggle('completed');\r\n  const tasks = (0,_functions_js__WEBPACK_IMPORTED_MODULE_0__.getTasks)();\r\n  tasks[index].completed = checked;\r\n  window.localStorage.setItem('tasks', JSON.stringify(tasks));\r\n  list.completeTask(index, checked);\r\n  (0,_functions_js__WEBPACK_IMPORTED_MODULE_0__.checkTaskStyle)(event.target.parentNode);\r\n};\r\n\r\nconst taskEdit = (event, list) => {\r\n  const task = event.target.parentNode.parentNode;\r\n  event.target.classList.toggle('fa-ellipsis-vertical');\r\n  event.target.classList.toggle('fa-trash-can');\r\n  if (event.target.classList.contains('fa-trash-can')) {\r\n    task.classList.add('bg-yellow');\r\n    task.children[1].disabled = false;\r\n  } else {\r\n    const icons = document.querySelectorAll('.svg-inline--fa');\r\n    const [, ...iconsArr] = icons;\r\n    const index = iconsArr.indexOf(event.target);\r\n    task.classList.remove('bg-yellow');\r\n    task.children[1].disabled = true;\r\n    list.removeTask(index);\r\n    if (!list.taskList.length) {\r\n      task.parentNode.classList.add('dn');\r\n    }\r\n    task.remove();\r\n  }\r\n};\r\n\r\nconst updateValue = (event, list) => {\r\n  const icon = event.target.parentNode.children[2];\r\n  if (!event.target.value) {\r\n    event.target.placeholder = \"the task shouldn't be empty. Please, add value.\";\r\n    return;\r\n  }\r\n  if (event.keyCode === 13) {\r\n    event.target.disabled = true;\r\n    event.target.parentNode.classList.remove('bg-yellow');\r\n    icon.children[0].classList.toggle('fa-ellipsis-vertical');\r\n    icon.children[0].classList.toggle('fa-trash-can');\r\n    const descriptions = document.querySelectorAll('.description');\r\n    const index = Array.from(descriptions).indexOf(event.target);\r\n    list.updateTaskDeskcription(index, event.target.value);\r\n  }\r\n};\r\n\r\nconst removeCompleted = (event, list) => {\r\n  const completedTasks = document.querySelectorAll('.disabled');\r\n  Array.from(completedTasks).forEach((task) => task.remove());\r\n  list.removeCompletedTask();\r\n  if (!list.taskList.length) {\r\n    const ul = document.querySelector('.list');\r\n    ul.classList.add('dn');\r\n  }\r\n};\n\n//# sourceURL=webpack://to-do-list/./src/modules/events.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"taskAdd\": () => (/* binding */ taskAdd),\n/* harmony export */   \"taskCompleted\": () => (/* binding */ taskCompleted),\n/* harmony export */   \"taskEdit\": () => (/* binding */ taskEdit),\n/* harmony export */   \"updateValue\": () => (/* binding */ updateValue),\n/* harmony export */   \"removeCompleted\": () => (/* binding */ removeCompleted)\n/* harmony export */ });\n/* harmony import */ var _functions_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./functions.js */ \"./src/modules/functions.js\");\n/* harmony import */ var _deleteTask_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./deleteTask.js */ \"./src/modules/deleteTask.js\");\n/* eslint-disable linebreak-style */\r\n\r\n\r\n\r\nconst taskAdd = (event, list) => {\r\n  const input = document.querySelector('#task');\r\n  const ul = input.parentNode.children[4];\r\n  if (!input.value) {\r\n    return;\r\n  }\r\n  if (event.keyCode === 13 || event.type === 'click') {\r\n    list.addTask(input.value);\r\n    ul.classList.remove('dn');\r\n    input.value = null;\r\n  }\r\n};\r\n\r\nconst taskCompleted = (event, list) => {\r\n  const checked = !event.target.parentNode.children[1].classList.contains('completed');\r\n  const listOfTasks = document.querySelectorAll('.checkbox');\r\n  const index = Array.from(listOfTasks).indexOf(event.target);\r\n  event.target.parentNode.classList.toggle('disabled');\r\n  event.target.parentNode.children[1].classList.toggle('completed');\r\n  const tasks = (0,_functions_js__WEBPACK_IMPORTED_MODULE_0__.getTasks)();\r\n  tasks[index].completed = checked;\r\n  window.localStorage.setItem('tasks', JSON.stringify(tasks));\r\n  list.completeTask(index, checked);\r\n  (0,_functions_js__WEBPACK_IMPORTED_MODULE_0__.checkTaskStyle)(event.target.parentNode);\r\n};\r\n\r\nconst taskEdit = (event, list) => {\r\n  const task = event.target.parentNode.parentNode;\r\n  event.target.classList.toggle('fa-ellipsis-vertical');\r\n  event.target.classList.toggle('fa-trash-can');\r\n  if (event.target.classList.contains('fa-trash-can')) {\r\n    task.classList.add('bg-yellow');\r\n    task.children[1].disabled = false;\r\n  } else {\r\n    // const icons = document.querySelectorAll('.svg-inline--fa');\r\n    // const [, ...iconsArr] = icons;\r\n    // const index = iconsArr.indexOf(event.target);\r\n    // task.classList.remove('bg-yellow');\r\n    // task.children[1].disabled = true;\r\n    // list.removeTask(index);\r\n    // if (!list.taskList.length) {\r\n    //   task.parentNode.classList.add('dn');\r\n    // }\r\n    // task.remove();\r\n    const icons = document.querySelectorAll('.svg-inline--fa');\r\n    const [, ...iconsArr] = icons;\r\n    task.classList.remove('bg-yellow');\r\n    task.children[1].disabled = true;\r\n    const index = iconsArr.indexOf(event.target);\r\n    (0,_deleteTask_js__WEBPACK_IMPORTED_MODULE_1__[\"default\"])(index, list, task);\r\n  }\r\n};\r\n\r\nconst updateValue = (event, list) => {\r\n  const icon = event.target.parentNode.children[2];\r\n  if (!event.target.value) {\r\n    event.target.placeholder = \"the task shouldn't be empty. Please, add value.\";\r\n    return;\r\n  }\r\n  if (event.keyCode === 13) {\r\n    event.target.disabled = true;\r\n    event.target.parentNode.classList.remove('bg-yellow');\r\n    icon.children[0].classList.toggle('fa-ellipsis-vertical');\r\n    icon.children[0].classList.toggle('fa-trash-can');\r\n    const descriptions = document.querySelectorAll('.description');\r\n    const index = Array.from(descriptions).indexOf(event.target);\r\n    list.updateTaskDeskcription(index, event.target.value);\r\n  }\r\n};\r\n\r\nconst removeCompleted = (event, list) => {\r\n  const completedTasks = document.querySelectorAll('.disabled');\r\n  Array.from(completedTasks).forEach((task) => task.remove());\r\n  list.removeCompletedTask();\r\n  if (!list.taskList.length) {\r\n    const ul = document.querySelector('.list');\r\n    ul.classList.add('dn');\r\n  }\r\n};\n\n//# sourceURL=webpack://to-do-list/./src/modules/events.js?");
 
 /***/ }),
 
@@ -235,6 +246,18 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 /******/ 		};
 /******/ 	})();
 /******/ 	
+/******/ 	/* webpack/runtime/global */
+/******/ 	(() => {
+/******/ 		__webpack_require__.g = (function() {
+/******/ 			if (typeof globalThis === 'object') return globalThis;
+/******/ 			try {
+/******/ 				return this || new Function('return this')();
+/******/ 			} catch (e) {
+/******/ 				if (typeof window === 'object') return window;
+/******/ 			}
+/******/ 		})();
+/******/ 	})();
+/******/ 	
 /******/ 	/* webpack/runtime/hasOwnProperty shorthand */
 /******/ 	(() => {
 /******/ 		__webpack_require__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
@@ -253,7 +276,22 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 /******/ 	
 /******/ 	/* webpack/runtime/publicPath */
 /******/ 	(() => {
-/******/ 		__webpack_require__.p = "/To-Do-list/";
+/******/ 		var scriptUrl;
+/******/ 		if (__webpack_require__.g.importScripts) scriptUrl = __webpack_require__.g.location + "";
+/******/ 		var document = __webpack_require__.g.document;
+/******/ 		if (!scriptUrl && document) {
+/******/ 			if (document.currentScript)
+/******/ 				scriptUrl = document.currentScript.src
+/******/ 			if (!scriptUrl) {
+/******/ 				var scripts = document.getElementsByTagName("script");
+/******/ 				if(scripts.length) scriptUrl = scripts[scripts.length - 1].src
+/******/ 			}
+/******/ 		}
+/******/ 		// When supporting browsers where an automatic publicPath is not supported you must specify an output.publicPath manually via configuration
+/******/ 		// or pass an empty string ("") and set the __webpack_public_path__ variable from your code to use your own logic.
+/******/ 		if (!scriptUrl) throw new Error("Automatic publicPath is not supported in this browser");
+/******/ 		scriptUrl = scriptUrl.replace(/#.*$/, "").replace(/\?.*$/, "").replace(/\/[^\/]+$/, "/");
+/******/ 		__webpack_require__.p = scriptUrl;
 /******/ 	})();
 /******/ 	
 /************************************************************************/
