@@ -64,7 +64,7 @@ export const updateValue = (event, list) => {
   }
 };
 
-export const removeCompleted = (event, list) => {
+export const removeCompleted = (list) => {
   const completedTasks = document.querySelectorAll('.disabled');
   Array.from(completedTasks).forEach((task) => task.remove());
   list.removeCompletedTask();
