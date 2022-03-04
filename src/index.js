@@ -10,5 +10,5 @@ document.querySelector('#enter').src = enter;
 
 document.querySelector('#task').addEventListener('keypress', (event) => taskAdd(event, taskList));
 document.querySelector('#enter').addEventListener('click', (event) => taskAdd(event, taskList));
-document.querySelector('#clear').addEventListener('click', (event) => removeCompleted(event, taskList));
+document.querySelector('#clear').addEventListener('click', () => removeCompleted(taskList));
 showToDoList(taskList);
